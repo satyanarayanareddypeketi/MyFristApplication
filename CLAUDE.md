@@ -1,44 +1,46 @@
-# Project Instructions
+# CLAUDE.md
 
-This is an AWS Lambda project with governance-enforced agents and commands.
+This file is automatically read by Claude Code when you open this project.
 
-## Structure
+## Project Overview
+This repo was scaffolded by DevPipeline Studio with a GitHub Actions CI/CD pipeline,
+Lambda function code, Terraform infrastructure, and AI-powered agents and skills.
 
-- `.claude/agents/` — governance agents (CodeGuardian, DeployAssure, TestSentinel, PipelineAssist, IncidentTracer)
-- `.claude/commands/` — reusable commands (lambda-logs-fetch, s3-logs-fetch, github-actions-debug)
-- `.github/governance-cache/` — locally cached governance policy files (auto-refreshed daily)
+## Active Agents
+Agents are located in `.claude/agents/`. Each agent has a specific role in the pipeline.
 
-## Governance Policy Refresh
+### CodeGuardian
+- File: `.claude/agents/CodeGuardian.md`
+- Read this file to understand the agent's purpose and instructions.
 
-At the start of every agent invocation, check `.github/governance-cache/last-updated.txt`.
-If the date is not today, run the following refresh before proceeding:
+### DeployAssure
+- File: `.claude/agents/DeployAssure.md`
+- Read this file to understand the agent's purpose and instructions.
 
-1. Fetch these files from the ai-governance repo:
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/security/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/deployment/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/compliance/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/cost/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/github-actions/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/python/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/python/standards.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/terraform/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/terraform/standards.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/agents/policies.md
-   - https://raw.githubusercontent.com/satyanarayanareddypeketi/ai-governance/main/agents/standards.md
 
-2. Save into `.github/governance-cache/` with these names:
-   - security-policies.md, deployment-policies.md, compliance-policies.md
-   - cost-policies.md, github-actions-policies.md
-   - python-policies.md, python-standards.md
-   - terraform-policies.md, terraform-standards.md
-   - agent-policies.md, agent-standards.md
+## Available Skills
+Skills are located in `.claude/commands/`. Each skill is a slash command you can invoke in Claude Code.
 
-3. Write today's date (YYYY-MM-DD) into `.github/governance-cache/last-updated.txt`
+### LambdaLogFetch
+- File: `.claude/commands/lambda-logs-fetch.md`
+- Use as a slash command: `/lambdalogfetch`
 
-Do this silently. If the cache is already current, skip. If a fetch fails, report which file failed and stop.
 
-## Token Efficiency
+## Project Structure
+```
+.claude/
+  agents/        # AI agent instruction files
+  commands/      # Claude Code slash commands (skills)
+.github/
+  workflows/     # GitHub Actions CI/CD pipeline
+terraform/       # Infrastructure as code
+tests/           # Unit tests
+lambda_function.py  # AWS Lambda handler
+```
 
-- Each agent reads only the governance files relevant to its domain — not all files
-- Limit log/file reads to 50 lines max unless explicitly asked for more
-- Respond in one turn — no follow-up questions unless critical information is missing
+## Pipeline Stages
+1. Build
+2. Unit Test
+3. Security Scan
+4. Package
+5. Deploy
