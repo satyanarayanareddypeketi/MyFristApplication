@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\\\\CodeGuardian.md\" \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.claude\\\\agents\\\\CodeGuardian.md\")",
+      "Bash(cp \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\\\\DeployAssure.md\" \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.claude\\\\agents\\\\DeployAssure.md\")",
+      "Bash(cp \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\\\\TestSentinel.md\" \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.claude\\\\agents\\\\TestSentinel.md\")",
+      "Bash(cp \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\\\\PipelineAssist.md\" \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.claude\\\\agents\\\\PipelineAssist.md\")",
+      "Bash(cp \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\\\\IncidentTracer.md\" \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.claude\\\\agents\\\\IncidentTracer.md\")",
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\agents\")",
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\satya\\\\Downloads\\\\MyFristApplication\\\\.github\\\\skills\")"
+    ]
+  }
+}
